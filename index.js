@@ -1,13 +1,14 @@
 /** @format */
 
 import React from 'react';
-import { AppRegistry, View, Text } from 'react-native';
-import {name as appName} from './app.json';
+import { AppRegistry, View } from 'react-native';
+import { name as appName } from './app.json';
+import Header from './src/components/Header';
 
 const App = () => (
   <View style={{ flex: 1 }}>
-    <Text>Burn My Fat!</Text>
+    <Header headerText={'Muscle Group'} />
   </View>
-)
+);
 
 AppRegistry.registerComponent(appName, () => App);
