@@ -8,6 +8,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "16.4.1",
     "react-native": "0.56.0"
   },
