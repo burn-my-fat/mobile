@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { TouchableOpacity, Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 
 const TrainingDetail = ({ training }) => {
   const { name } = training;
   const {
+    buttonStyle,
     thumbnailContainerStyle,
     thumbnailStyle,
     headerContentStyle,
@@ -15,16 +16,18 @@ const TrainingDetail = ({ training }) => {
   return (
     <Card>
       <CardSection>
-        <View style={thumbnailContainerStyle}>
-          <Image
-            style={thumbnailStyle}
-            source={{ uri: 'https://png.icons8.com/ios/1600/ios-application-placeholder.png' }}
-          />
-        </View>
+        <TouchableOpacity style={buttonStyle}>
+          <View style={thumbnailContainerStyle}>
+            <Image
+              style={thumbnailStyle}
+              source={{ uri: 'https://png.icons8.com/ios/1600/ios-application-placeholder.png' }}
+            />
+          </View>
 
-        <View style={headerContentStyle}>
-          <Text style={headerTextStyle}>{name}</Text>
-        </View>
+          <View style={headerContentStyle}>
+            <Text style={headerTextStyle}>{name}</Text>
+          </View>
+        </TouchableOpacity>
       </CardSection>
     </Card>
   );
@@ -47,6 +50,13 @@ const styles = {
   },
   headerTextStyle: {
     fontSize: 18
+  },
+  buttonStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    paddingTop: 5,
+    paddingBottom: 5
   }
 };
 
