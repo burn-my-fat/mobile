@@ -1,16 +1,5 @@
-/** @format */
-
-import React from 'react';
-import { AppRegistry, View } from 'react-native';
+import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
-import Header from './src/components/Header';
-import TrainingList from './src/components/TrainingList';
-
-const App = () => (
-  <View style={{ flex: 1 }}>
-    <Header headerText={'Trainings'} />
-    <TrainingList />
-  </View>
-);
+import App from './src/App';
 
 AppRegistry.registerComponent(appName, () => App);
