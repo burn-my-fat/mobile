@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import Card from './Card';
-import CardSection from './CardSection';
+import { Card, CardSection } from './common';
 
 const MuscleGroupDetail = ({ muscleGroup }) => {
   const { name } = muscleGroup;

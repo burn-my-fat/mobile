@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stack, Scene, Router } from 'react-native-router-flux';
-import TrainingList from './components/TrainingList';
+import TrainingTypeList from './components/TrainingTypeList';
 
 const RouterComponent = () => {
   return (
@@ -8,15 +8,22 @@ const RouterComponent = () => {
       <Stack key="root" hideNavBar>
         <Scene key="main">
           <Scene
-            key="trainingList"
-            component={TrainingList}
-            title="Trainings"
+            key="trainingTypeList"
+            component={TrainingTypeList}
+            title="TrainingTypes"
+            navigationBarStyle={styles.navigationBarStyle}
             initial
           />
         </Scene>
       </Stack>
     </Router>
   );
+};
+
+const styles = {
+  navigationBarStyle: {
+    backgroundColor: 'rgb(254, 203, 89)',
+  }
 };
 
 export default RouterComponent;
