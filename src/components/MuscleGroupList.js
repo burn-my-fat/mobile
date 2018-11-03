@@ -1,29 +1,52 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
-import axios from 'axios';
-import MuscleGroupDetail from './MuscleGroupDetail';
+import { connect } from 'react-redux';
+import { ListView } from 'react-native';
+import { muscleGroupsFetch } from '../actions';
+import MuscleGroupItem from './MuscleGroupItem';
 
 class MuscleGroupList extends Component {
-  state = { muscleGroups: [] };
-
   componentWillMount() {
-    axios.get('http://127.0.0.1:2300/api/muscle_groups')
-      .then(response => this.setState({ muscleGroups: response.data }));
+    // FIXME: В идеале текущий компонент ничего не должен знать про trainingType.
+    // Сверху ему надо прокидывать только мышечные группы, чтобы изолировать видимость.
+    this.props.muscleGroupsFetch({ muscleGroups: this.props.trainingType.muscle_groups });
+
+    this.createDataSource(this.props);
   }
 
-  renderMuscleGroups() {
-    return this.state.muscleGroups.map(muscleGroup =>
-      <MuscleGroupDetail key={muscleGroup.id} muscleGroup={muscleGroup} />
-    );
+  componentWillReceiveProps(nextProps) {
+    this.createDataSource(nextProps);
+  }
+
+  createDataSource({ muscleGroups }) {
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
+
+    this.dataSource = ds.cloneWithRows(muscleGroups);
+  }
+
+  renderRow(muscleGroup) {
+    return <MuscleGroupItem muscleGroup={muscleGroup} />;
   }
 
   render() {
     return (
-      <ScrollView>
-        {this.renderMuscleGroups()}
-      </ScrollView>
+      <ListView
+        enableEmptySections
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+      />
     );
   }
 }
 
-export default MuscleGroupList;
+const mapStateToProps = state => {
+  const muscleGroups = _.map(state.muscleGroups, (val, id) => {
+    return { ...val, id };
+  });
+
+  return { muscleGroups };
+};
+
+export default connect(mapStateToProps, { muscleGroupsFetch })(MuscleGroupList);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack, Scene, Router } from 'react-native-router-flux';
 import TrainingTypeList from './components/TrainingTypeList';
+import MuscleGroupList from './components/MuscleGroupList';
 
 const RouterComponent = () => {
   return (
@@ -13,6 +14,13 @@ const RouterComponent = () => {
             title="TrainingTypes"
             navigationBarStyle={styles.navigationBarStyle}
             initial
+          />
+
+          <Scene
+            key="muscleGroupList"
+            component={MuscleGroupList}
+            title="MuscleGroups"
+            navigationBarStyle={styles.navigationBarStyle}
           />
         </Scene>
       </Stack>

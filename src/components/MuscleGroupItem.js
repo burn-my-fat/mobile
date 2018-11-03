@@ -3,11 +3,9 @@ import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 
-class TrainingTypeItem extends Component {
+class MuscleGroupItem extends Component {
   onRowPress() {
-    // FIXME: Разобраться, как прокидывать только muscle_groups в компонент.
-    // Дочерний компонент не должен знать ничего о trainingType.
-    Actions.muscleGroupList({ trainingType: this.props.trainingType });
+    console.log('MuscleGroupItem onRowPress');
   }
 
   render() {
@@ -18,7 +16,7 @@ class TrainingTypeItem extends Component {
       titleTextStyle
     } = styles;
 
-    const { name } = this.props.trainingType;
+    const { name } = this.props.muscleGroup;
 
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
@@ -63,4 +61,4 @@ const styles = {
   }
 };
 
-export default TrainingTypeItem;
+export default MuscleGroupItem;
