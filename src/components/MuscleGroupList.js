@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
@@ -7,9 +6,7 @@ import MuscleGroupItem from './MuscleGroupItem';
 
 class MuscleGroupList extends Component {
   componentWillMount() {
-    // FIXME: В идеале текущий компонент ничего не должен знать про trainingType.
-    // Сверху ему надо прокидывать только мышечные группы, чтобы изолировать видимость.
-    this.props.muscleGroupsFetch({ muscleGroups: this.props.trainingType.muscle_groups });
+    this.props.muscleGroupsFetch({ muscleGroups: this.props.muscleGroups });
 
     this.createDataSource(this.props);
   }
@@ -41,12 +38,4 @@ class MuscleGroupList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const muscleGroups = _.map(state.muscleGroups, (val, id) => {
-    return { ...val, id };
-  });
-
-  return { muscleGroups };
-};
-
-export default connect(mapStateToProps, { muscleGroupsFetch })(MuscleGroupList);
+export default connect(null, { muscleGroupsFetch })(MuscleGroupList);

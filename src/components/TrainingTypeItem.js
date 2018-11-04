@@ -5,9 +5,7 @@ import { CardSection } from './common';
 
 class TrainingTypeItem extends Component {
   onRowPress() {
-    // FIXME: Разобраться, как прокидывать только muscle_groups в компонент.
-    // Дочерний компонент не должен знать ничего о trainingType.
-    Actions.muscleGroupList({ trainingType: this.props.trainingType });
+    Actions.muscleGroupList({ muscleGroups: this.props.trainingType.muscle_groups });
   }
 
   render() {
