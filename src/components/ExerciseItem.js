@@ -3,9 +3,9 @@ import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 
-class MuscleGroupItem extends Component {
+class ExerciseItem extends Component {
   onRowPress() {
-    Actions.exerciseList({ exercises: this.props.muscleGroup.exercises });
+    console.log('Row pressed');
   }
 
   render() {
@@ -16,7 +16,7 @@ class MuscleGroupItem extends Component {
       titleTextStyle
     } = styles;
 
-    const { name } = this.props.muscleGroup;
+    const { name } = this.props.exercise;
 
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
@@ -61,4 +61,4 @@ const styles = {
   }
 };
 
-export default MuscleGroupItem;
+export default ExerciseItem;
