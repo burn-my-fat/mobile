@@ -3,6 +3,7 @@ import { Stack, Scene, Router } from 'react-native-router-flux';
 import TrainingTypeList from './components/TrainingTypeList';
 import MuscleGroupList from './components/MuscleGroupList';
 import ExerciseList from './components/ExerciseList';
+import ExerciseForm from './components/ExerciseForm';
 
 const RouterComponent = () => {
   return (
@@ -28,6 +29,13 @@ const RouterComponent = () => {
             key="exerciseList"
             component={ExerciseList}
             title="Exercises"
+            navigationBarStyle={styles.navigationBarStyle}
+          />
+
+          <Scene
+            key="exerciseForm"
+            component={ExerciseForm}
+            title="Exercise"
             navigationBarStyle={styles.navigationBarStyle}
           />
         </Scene>

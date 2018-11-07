@@ -5,7 +5,7 @@ import { CardSection } from './common';
 
 class ExerciseItem extends Component {
   onRowPress() {
-    console.log('Row pressed');
+    Actions.exerciseForm({ exercise: this.props.exercise });
   }
 
   render() {
