@@ -35,7 +35,7 @@ const RouterComponent = () => {
           <Scene
             key="exerciseForm"
             component={ExerciseForm}
-            title="Exercise"
+            title="Exercise Details"
             navigationBarStyle={styles.navigationBarStyle}
           />
         </Scene>
